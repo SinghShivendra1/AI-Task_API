@@ -1,12 +1,13 @@
-from app.agents import PlannerAgent, ExecutorAgent
+from agents.planner import PlannerAgent
+from agents.executor import ExecutorAgent
 
 
-def run_workflow(task: str) -> dict:
+def run_workflow(task: str):
     planner = PlannerAgent()
     executor = ExecutorAgent()
 
     plan = planner.create_plan(task)
-    execution = executor.execute(task, plan)
+    execution = executor.execute_plan(task, plan)
 
     return {
         "task": task,
